@@ -16,7 +16,7 @@ import com.valpoSystems.domain.request.AuthRequest;
 import com.valpoSystems.service.JwtUserDetailsService;
 import com.valpoSystems.util.JwtTokenUtil;
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 	 private final AuthenticationManager authenticationManager;
 	    private final JwtUserDetailsService userDetailsService;
