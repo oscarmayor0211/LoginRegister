@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		UserModel userEntity = userRepository.getById(userModel.getId());
 
 		userEntity.setName(userModel.getName());
-		userEntity.setPassword(userModel.getPassword());
+		userEntity.setPassword(passwordEncoder.encode(userModel.getPassword()));
 		userEntity.setEmail(userModel.getEmail());
 		userEntity.setPhones(userModel.getPhones().stream().map(p -> new PhoneModel(userEntity, p.getNumber(),
 										p.getCityCode(), p.getCountryCode(), LocalDateTime.now()))
