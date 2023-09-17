@@ -1,11 +1,15 @@
-<div class="header">
+<div class="header " >
     <br/>
     <div >
         <div class="d-flex lex-row align-items-center">
-            
+            <nav class="nav">
+                <button class="nav-link active "  (click)="updateUser()">User Update</button>
+                <button class="nav-link"   (click)="logOut()">Log out</button>
+              
+              </nav>
         </div>
         <div class="d-flex flex-row align-items-center justify-content-end  mx-4">
-            <h5>Bienvenido, <b>{{name}}</b> &nbsp;<i class="bi bi-person-circle"></i> </h5>
+            <h5>Welcome, <b>{{name}}</b> &nbsp;<i class="bi bi-person-circle"></i> </h5>
         </div>
         
         

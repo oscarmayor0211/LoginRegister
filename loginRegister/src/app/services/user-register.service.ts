@@ -17,6 +17,14 @@ export class UserRegisterService {
   }
 
   editRegister(user : User):Observable<any>{
-    return this.http.post(`${this.URL}users/${user.id}`, user);
+    console.log(user);
+    
+    return this.http.put(`${this.URL}users/${user.idUser}`, user);
+  }
+
+  logOut(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
   }
 }

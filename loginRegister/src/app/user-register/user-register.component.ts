@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserRegisterService } from '../services/user-register.service';
 import { User } from '../model/User.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-register',
@@ -12,7 +13,7 @@ import { User } from '../model/User.model';
 export class UserRegisterComponent implements OnInit {
   form: FormGroup;
   user: any;
-  Users : User[];
+  Users: User[];
   constructor(private fb: FormBuilder, private router: Router, private userService: UserRegisterService) { }
 
   ngOnInit() {
@@ -20,41 +21,54 @@ export class UserRegisterComponent implements OnInit {
   }
   createForm() {
     this.form = this.fb.group({
-      idUser:[],
+      idUser: [],
       username: [""],
       password: ["", [Validators.required, Validators.minLength(4)]],
-      email: ["",[Validators.required, Validators.pattern("^[a-zA-Z0-9-]+$")]],
-      phone :[null, Validators.required],
-      country:[null, Validators.required],
-      city:[null, Validators.required]
+      email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9-]+$")]],
+      phone: [null, Validators.required],
+      country: [null, Validators.required],
+      city: [null, Validators.required]
     });
   }
 
-  registerUser(){
-   console.log(this.form.value);
-   this.user = {
-    idUser: this.form.value.id,
-    name: this.form.value.username,
-    password:this.form.value.password,
-    email: this.form.value.email,
-    phones:[ {
-      contrycode: this.form.value.country,
-      citycode: this.form.value.city,
-      number: this.form.value.phone
-    
-    }]
-    
-}
-console.log(this.user);
-if (this.form.value.idUser === null) {
-  this.userService.userRegister(this.user)
-    .subscribe((usr: any) => {
-      console.log(usr);
+  registerUser() {
+    console.log(this.form.value);
+    this.user = {
+      idUser: this.form.value.idUser,
+      name: this.form.value.username,
+      password: this.form.value.password,
+      email: this.form.value.email,
+      phones: [{
+        contrycode: this.form.value.country,
+        citycode: this.form.value.city,
+        number: this.form.value.phone
 
-      this.Users = usr;
-    //  Swal.fire("Project Creado");
-      //this.resetFormulario();
-    });
+      }]
+
+    }
+    console.log(this.user);
+    if (this.form.value.idUser === null) {
+      this.userService.userRegister(this.user)
+        .subscribe((usr: any) => {
+          console.log(usr);
+
+          this.Users = usr;
+           Swal.fire("User created");
+          this.resetFormulario();
+        });
+    }
   }
-}
+
+  resetFormulario() {
+    this.form.reset({
+      idUser:null,
+      name:null,
+        password:null,
+      email:null,
+        phones:null,
+      contrycode:null,
+        citycode:null,
+      number:null
+  });
+  }
 }

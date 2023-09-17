@@ -39,20 +39,17 @@ export class LoginComponent implements OnInit {
 
   logueo() {
     console.log(this.form);
-    
       this.loginService.login(this.form.value).subscribe((user: any) => {
         console.log(user);
+        this.users = user;
         const jwtToken = user.token;
         const name = user.name;
         // Almacena el token en el almacenamiento local o en una cookie, por ejemplo.
         localStorage.setItem('token', jwtToken);
-        localStorage.setItem('name',name);
+        localStorage.setItem('user',JSON.stringify(this.users));
                 // Realiza cualquier redirección o acción necesaria después del inicio de sesión.
 
-        this.router.navigate(['home']);
-
-     
-        this.users = user;
+        this.router.navigate(['home/user']);
       }, error => {
         Swal.fire({
           icon: 'error',
