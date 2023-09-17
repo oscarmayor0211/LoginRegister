@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { User } from "../model/User.model";
 import { LoginService } from "../services/login.service";
+import Swal from 'sweetalert2';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -11,10 +12,10 @@ import { LoginService } from "../services/login.service";
 export class LoginComponent implements OnInit {
   form: FormGroup;
   hasSubmitted: boolean = false;
-  users : User[];
-  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) {}
+  users: User[];
+  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) { }
 
-  
+
   ngOnInit() {
     this.createForm();
   }
@@ -36,15 +37,31 @@ export class LoginComponent implements OnInit {
     return this.form.get("password");
   }
 
-  logueo(){
+  logueo() {
     console.log(this.form);
-    if (this.form.value.username != null) {
-      this.loginService.login(this.form.value).subscribe((user : any) =>{
+    
+      this.loginService.login(this.form.value).subscribe((user: any) => {
         console.log(user);
-        
+        const jwtToken = user.token;
+        const name = user.name;
+        // Almacena el token en el almacenamiento local o en una cookie, por ejemplo.
+        localStorage.setItem('token', jwtToken);
+        localStorage.setItem('name',name);
+                // Realiza cualquier redirección o acción necesaria después del inicio de sesión.
+
+        this.router.navigate(['home']);
+
+     
         this.users = user;
-      }, error  => console.error(error.message)
+      }, error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.message,
+        })
+      }
+
       );
+    
   }
-}
 }

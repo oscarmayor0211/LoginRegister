@@ -5,7 +5,7 @@
         <input type="email" class="form-control" id="exampleDropdownFormEmail1" formControlName="username" placeholder="email@example.com">
         <div *ngIf="username.invalid && (username.touched || hasSubmitted)">
             <small *ngIf="username.hasError('required')" class="text-danger">Usuario Requerido</small>
-            <small *ngIf="username.errors['pattern']" class="text-danger">No debe tener caracteres especiales</small>
+           
         </div>
       </div>
       <div class="form-group">
@@ -19,7 +19,7 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Sign in</button>
-      <a class="dropdown-item" href="#">New around here? Sign up</a>
+      <a class="dropdown-item"[routerLink]="['/user/register']">New around here? Sign up</a>
 
     </form>
 
