@@ -103,9 +103,9 @@ PUT - http://localhost:8080/users/7d8049a2-a221-458d-ae0f-d53ca831018d
 
 ## [Proyecto - Spring boot]
 ## [Librerias - maven]
-## [Segurida - JWT]
+## [Seguridad - JWT]
 ## [Base de datos - h2]
 ## [JPA - Hibernate]
-## [Amgular]
+## [Angular]
 # Autor ✒️
 ## Oscar Eduardo Mayor Jaramillo
