@@ -38,9 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   logueo() {
-    console.log(this.form);
       this.loginService.login(this.form.value).subscribe((user: any) => {
-        console.log(user);
         this.users = user;
         const jwtToken = user.token;
         const name = user.name;

@@ -32,7 +32,6 @@ export class UserRegisterComponent implements OnInit {
   }
 
   registerUser() {
-    console.log(this.form.value);
     this.user = {
       idUser: this.form.value.idUser,
       name: this.form.value.username,
@@ -50,8 +49,6 @@ export class UserRegisterComponent implements OnInit {
     if (this.form.value.idUser === null) {
       this.userService.userRegister(this.user)
         .subscribe((usr: any) => {
-          console.log(usr);
-
           this.Users = usr;
            Swal.fire("User created");
           this.resetFormulario();

@@ -16,9 +16,7 @@ export class UserRegisterService {
     return this.http.post(`${this.URL}users/save`, user);
   }
 
-  editRegister(user : User):Observable<any>{
-    console.log(user);
-    
+  editRegister(user : User):Observable<any>{    
     return this.http.put(`${this.URL}users/${user.idUser}`, user);
   }
 

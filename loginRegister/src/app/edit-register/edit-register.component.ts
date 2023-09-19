@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../model/User.model';
 import { UserRegisterService } from '../services/user-register.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-register',
@@ -31,7 +32,6 @@ export class EditRegisterComponent implements OnInit {
   }
 
   updateService(){
-    console.log(this.form.value);
     this.user = {
       idUser: this.form.value.idUser,
       name: this.form.value.username,
@@ -44,10 +44,10 @@ export class EditRegisterComponent implements OnInit {
       
       }]
     }
-    console.log(this.user);
     this.userService.editRegister(this.user).subscribe((usr: any) =>{
-      console.log(usr);
       this.users = usr;
+      Swal.fire("User Edited");
+
     })
   }
 }
