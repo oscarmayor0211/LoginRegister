@@ -94,7 +94,7 @@ PUT - http://localhost:8080/users/7d8049a2-a221-458d-ae0f-d53ca831018d
  "modified": 2023-09-19T17:14:12.2234323,
 }
 ```
-# Para correr el front 
+# Para correr el frontend Hecho En angular
 ## npm install
 ## ng serve -o 
 # Construido con 🛠️
