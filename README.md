@@ -106,5 +106,6 @@ PUT - http://localhost:8080/users/7d8049a2-a221-458d-ae0f-d53ca831018d
 ## [Segurida - JWT]
 ## [Base de datos - h2]
 ## [JPA - Hibernate]
+## [Amgular]
 # Autor ✒️
 ## Oscar Eduardo Mayor Jaramillo
