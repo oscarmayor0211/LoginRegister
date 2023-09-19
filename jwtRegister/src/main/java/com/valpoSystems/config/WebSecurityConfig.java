@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final UserDetailsService jwtUserDetailsService;
 	private final JwtRequestFilter jwtRequestFilter;
 
-	private static final String[] PUBLICS = { "/h2-console/**", "/authenticate", "/users/**" };
+	private static final String[] PUBLICS = { "/h2-console/**", "/authenticate", "/users/save" };
 
 	public WebSecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
 			UserDetailsService jwtUserDetailsService, JwtRequestFilter jwtRequestFilter) {
@@ -52,5 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+	     // Deshabilita la protección CSRF (Cross-Site Request Forgery) para la consola de H2
+        http.csrf().disable();
+
+        // Habilita los encabezados de seguridad de H2
+        http.headers().frameOptions().disable();
 	}
 }

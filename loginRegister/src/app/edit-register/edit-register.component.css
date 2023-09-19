@@ -1,7 +1,22 @@
 .register{
     width: 400px;
     margin: 100px auto 0px;
+
 }
-.botones{
+
+.formu{
+    color: white;
+    background-color: darkgrey;
+    width: 34%;
+    margin: 15px 446px;
+    height: 524px;
+    border-radius: 20px;
+}
+.btn{
     margin-left: 9px;
+}
+
+h4{
+    margin: 3px 115px 20px;
+    padding: 4px;
 }

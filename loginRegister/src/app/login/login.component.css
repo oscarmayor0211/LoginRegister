@@ -1,5 +1,18 @@
 .login{
     width: 328px;
-    height: 215px;
     margin: 36px auto 110px;
+    color: white;
+    background-color: darkgrey;
+    margin: 185px auto;
+    opacity: 83%;
+    border-radius: 40px;
+}
+.campos{
+    margin-top: 23px;
+}
+.btn{
+    margin-top: 10px;
+}
+h1{
+    margin: 0px 88px 10px;
 }

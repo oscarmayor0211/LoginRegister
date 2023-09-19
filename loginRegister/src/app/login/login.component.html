@@ -1,8 +1,10 @@
 <div class="container">
     <form class="px-4 py-3 login" [formGroup]="form" (ngSubmit)="logueo()">
-      <div class="form-group">
+      <div class="form-group campos">
+        <h1>Login</h1>
+
         <label for="exampleDropdownFormEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleDropdownFormEmail1" formControlName="username" placeholder="email@example.com">
+        <input type="email" class="form-control" id="exampleDropdownFormEmail1" formControlName="username" placeholder="Enter your email">
         <div *ngIf="username.invalid && (username.touched || hasSubmitted)">
             <small *ngIf="username.hasError('required')" class="text-danger">Usuario Requerido</small>
            

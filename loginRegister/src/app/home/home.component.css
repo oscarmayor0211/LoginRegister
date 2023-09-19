@@ -1,8 +1,21 @@
 .header{
-   
+    color: #e57d7d;
+ background-color: #23252b;
  
 }
 .nav-link{
-    color: black;
+    color: #e57d7d;
     font-weight: bold;
 }
+
+.elemento {
+    width: 48%; /* O el ancho que desees */
+    float: left;
+  }
+  .elementos{
+    overflow: auto; /* Para limpiar el float */
+  }
+  .contenido{
+    color: white;
+    padding: 10px;
+  }

@@ -1,3 +1,4 @@
+<div class="formu">
 <form class="register" [formGroup]="form" (ngSubmit)="registerUser()">
     <h4>Register User</h4>
     <hr />
@@ -51,5 +52,8 @@
         </select>
     </div>
     
-    <button type="submit" class="btn btn-primary">Ingresar</button>
+    <button type="submit" class="btn btn-primary btn">SAVE</button>
+    <button type="text" class="btn btn-danger"  [routerLink]="['/login']">CANCEL</button>
+
 </form>
+</div>
